@@ -8,9 +8,9 @@ from PIL import ImageDraw
 
 st.title('顔認識アプリ')
 
-subscription_key = '3198e2b529194fdfb37ba89bf9506178'
+subscription_key = '33d23bf17e6f4df4ab569f9ad229c132'
 assert subscription_key
-face_api_url = 'https://20211122oi.cognitiveservices.azure.com/face/v1.0/detect'
+face_api_url = 'https://20220105joe.cognitiveservices.azure.com//face/v1.0/detect'
 
 
 

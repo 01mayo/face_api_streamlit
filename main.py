@@ -68,6 +68,6 @@ if uploaded_file is not None:
         draw = ImageDraw.Draw(img)
 
         draw.rectangle([(rect['left'], rect['top']), (rect['left']+rect['width'], rect['top']+rect['height'])], fill=None,  outline=(0,255,255), width=5)
-        draw_text(result)
+        draw.text(result)
     st.image(img, caption='Uploaded Image.', use_column_width=True)
 

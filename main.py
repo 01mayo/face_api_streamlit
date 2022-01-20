@@ -18,11 +18,11 @@ def get_draw_text(faceDictionary):
     age = int(faceAttr['age'])
     gender = faceAttr['gender']
     text = f'gender:{gender} age:{age}'
-
+   
     # 枠に合わせてフォントサイズを調整
     font_size = max(10, int(rect['width'] / len(text)))
-    #font = ImageFont.truetype(font='Arial', size=20, index=0, encoding='', layout_engine=None)
-    font = ImageFont.truetype('/System/Library/Fonts/Hiragino Sans GB.ttc', font_size)
+    font = ImageFont.truetype(font='Arial', size=20, index=0, encoding='', layout_engine=None)
+
 
     return (text, font)
 

@@ -3,7 +3,9 @@ import io
 import requests
 from PIL import Image
 from PIL import ImageDraw, ImageFont
-
+from azure.cognitiveservices.vision.face import FaceClient
+from msrest.authentication import CognitiveServicesCredentials
+from azure.cognitiveservices.vision.face.models import TrainingStatusType, Person
 
 
 st.title('顔認識アプリ')
@@ -11,6 +13,9 @@ st.title('顔認識アプリ')
 subscription_key = '33d23bf17e6f4df4ab569f9ad229c132'
 assert subscription_key
 face_api_url = 'https://20220105joe.cognitiveservices.azure.com//face/v1.0/detect'
+
+# クライアントを認証する
+face_client = FaceClient('https://20220105joe.cognitiveservices.azure.com//face/v1.0/detect', CognitiveServicesCredentials('33d23bf17e6f4df4ab569f9ad229c132'))
 
 # 描画するテキストを取得
 def get_draw_text(faceDictionary):

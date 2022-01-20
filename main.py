@@ -5,7 +5,7 @@ from PIL import Image
 from PIL import ImageDraw, ImageFont
 from azure.cognitiveservices.vision.face import FaceClient
 from msrest.authentication import CognitiveServicesCredentials
-from azure.cognitiveservices.vision.face.models import TrainingStatusType, Person
+
 
 
 st.title('顔認識アプリ')

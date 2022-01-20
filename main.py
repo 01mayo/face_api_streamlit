@@ -4,7 +4,6 @@ import requests
 from PIL import Image
 from PIL import ImageDraw, ImageFont
 
-
 st.title('顔認識アプリ')
 
 subscription_key = '33d23bf17e6f4df4ab569f9ad229c132'
@@ -22,8 +21,8 @@ def get_draw_text(faceDictionary):
 
     # 枠に合わせてフォントサイズを調整
     font_size = max(10, int(rect['width'] / len(text)))
-    font = ImageFont.truetype(font='Arial', size=20, index=0, encoding='', layout_engine=None)
-    #font = ImageFont.truetype('Arial', font_size)
+    #font = ImageFont.truetype(font='Arial', size=20, index=0, encoding='', layout_engine=None)
+    font = ImageFont.truetype('/System/Library/Fonts/Hiragino Sans GB.ttc', font_size)
 
     return (text, font)
 

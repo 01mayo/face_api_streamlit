@@ -14,7 +14,7 @@ subscription_key = '33d23bf17e6f4df4ab569f9ad229c132'
 assert subscription_key
 face_api_url = 'https://20220105joe.cognitiveservices.azure.com//face/v1.0/detect'
 
-# クライアントを認証する
+# クライアントを認証する※追加
 face_client = FaceClient('https://20220105joe.cognitiveservices.azure.com//face/v1.0/detect', CognitiveServicesCredentials('33d23bf17e6f4df4ab569f9ad229c132'))
 
 # 描画するテキストを取得

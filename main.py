@@ -11,6 +11,16 @@ assert subscription_key
 face_api_url = 'https://20220105joe.cognitiveservices.azure.com//face/v1.0/detect'
 
 
+
+# 認識された顔の上にテキストを描く座標を取得
+def get_text_rectangle(faceDictionary, text, font):
+    rect = faceDictionary['faceRectangle']
+    text_width, text_height = font.getsize(text)
+    left = rect['left'] + rect['width'] / 2 - text_width / 2
+    top = rect['top'] - text_height - 1
+
+    return (left, top)
+
 # 描画するテキストを取得
 def get_draw_text(faceDictionary):
     rect = faceDictionary['faceRectangle']
@@ -21,23 +31,13 @@ def get_draw_text(faceDictionary):
    
     # 枠に合わせてフォントサイズを調整
     font_size = max(10, int(rect['width'] / len(text)))
-    font_path = '/System/Library/Fonts/Hiragino Sans GB.ttc'
-    #font = ImageFont.truetype('Arial', font_size)
+    font = ImageFont.truetype('Arial', font_size)
     #font = ImageFont.truetype(font='/System/Library/Fonts/Arial', size=20, index=0, encoding='', layout_engine=None)
-    font = ImageFont.truetype(font=font_path, size=font_size, index=0, encoding='', layout_engine=None)
+   
 
 
     return (text, font)
 
-
-# 認識された顔の上にテキストを描く座標を取得
-def get_text_rectangle(faceDictionary, text, font):
-    rect = faceDictionary['faceRectangle']
-    text_width, text_height = font.getsize(text)
-    left = rect['left'] + rect['width'] / 2 - text_width / 2
-    top = rect['top'] - text_height - 1
-
-    return (left, top)
 
 # テキストを描画
 def draw_text(faceDictionary):

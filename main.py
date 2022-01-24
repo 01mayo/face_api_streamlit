@@ -10,7 +10,14 @@ subscription_key = '33d23bf17e6f4df4ab569f9ad229c132'
 assert subscription_key
 face_api_url = 'https://20220105joe.cognitiveservices.azure.com//face/v1.0/detect'
 
-
+headers = {
+            'Content-Type': 'application/octet-stream',
+            'Ocp-Apim-Subscription-Key': subscription_key
+}
+params = {
+            'returnFaceId': 'true',
+            'returnFaceAttributes': 'age,gender,smile,facialHair,headPose,glasses,emotion,hair,makeup,occlusion'       
+}
 
 # 認識された顔の上にテキストを描く座標を取得
 def get_text_rectangle(faceDictionary, text, font):
@@ -51,15 +58,7 @@ if uploaded_file is not None:
     with io.BytesIO() as output:
         img.save(output, format="JPEG")
         binary_img = output.getvalue() #バイナリ取得
-    headers = {
-            'Content-Type': 'application/octet-stream',
-            'Ocp-Apim-Subscription-Key': subscription_key
-        }
-    params = {
-            'returnFaceId': 'true',
-            'returnFaceAttributes': 'age,gender,smile,facialHair,headPose,glasses,emotion,hair,makeup,occlusion'       
-        }
-
+   
     res = requests.post(face_api_url, params=params, headers=headers, data=binary_img)
 
     results = res.json()
